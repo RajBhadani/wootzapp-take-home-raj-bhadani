@@ -1,0 +1,5 @@
+transaction_id,sale_date,store_id,product_id,quantity
+H001,2026-02-01,DEL-01,P100,1
+H002,2026-02-02,NOI-01,P100,2
+H003,2026-02-02,DEL-01,P200,2
+H004,2026-02-03,NOI-01,P200,1
