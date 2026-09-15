@@ -6,22 +6,12 @@ import pandas as pd
 DATA = Path("/app/data")
 OUT = Path("/app/output")
 
-ORDER_ID = "order" + "_" + "id"
-LIST_PRICE = "list" + "_" + "price"
-
 
 def main():
     frame = pd.read_csv(DATA / "orders.csv")
 
-    required = {ORDER_ID, "category", LIST_PRICE, "discount"}
-    if set(frame.columns) != required:
-        raise ValueError("unexpected columns")
-
-    if frame[ORDER_ID].duplicated().any():
-        raise ValueError("duplicate order id")
-
-    frame[LIST_PRICE] = pd.to_numeric(
-        frame[LIST_PRICE],
+    frame["list_price"] = pd.to_numeric(
+        frame["list_price"],
         errors="raise",
     )
 
@@ -30,13 +20,10 @@ def main():
         errors="coerce",
     )
 
-    # Intentional bug:
-    # Missing discounts are filled with one global mean.
-    frame["discount"] = frame["discount"].fillna(
-        frame["discount"].mean()
-    )
+    category_medians = frame.groupby("category")["discount"].transform("median")
+    frame["discount"] = frame["discount"].fillna(category_medians)
 
-    frame["revenue"] = frame[LIST_PRICE] * (1 - frame["discount"])
+    frame["revenue"] = frame["list_price"] * (1 - frame["discount"])
 
     result = (
         frame.groupby("category", as_index=False)["revenue"]
@@ -44,11 +31,14 @@ def main():
         .round({"revenue": 2})
     )
 
+    result = result[["category", "revenue"]]
+
     OUT.mkdir(parents=True, exist_ok=True)
     result.to_csv(
-        OUT / ("category" + "_" + "revenue.csv"),
+        OUT / "category_revenue.csv",
         index=False,
     )
 
 
-main()
+if __name__ == "__main__":
+    main()
