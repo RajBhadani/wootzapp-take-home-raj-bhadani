@@ -1,0 +1,26 @@
+schema_version = "1.4"
+artifacts = ["/app/pipeline.py"]
+
+[task]
+name = "rajbhadani/task-04-aggregation-grain"
+version = "1.0.0"
+description = "Fix customer-month aggregation granularity."
+
+[metadata]
+category = "data-pipeline"
+difficulty = "medium"
+
+[agent]
+timeout_sec = 300
+
+[verifier]
+timeout_sec = 120
+environment_mode = "separate"
+
+[verifier.environment]
+os = "linux"
+network_mode = "no-network"
+
+[environment]
+os = "linux"
+network_mode = "no-network"

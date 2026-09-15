@@ -1,0 +1,4 @@
+invoice_id,customer_id,invoice_date,amount
+I1,C1,2026-01-15,100
+I2,C1,2026-02-10,120
+I3,C2,2026-01-20,80
