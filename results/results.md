@@ -13,4 +13,4 @@ Each task is evaluated with private hidden data and a deterministic verifier.
 ## Evaluation command
 
 ```cmd
-harbor run -p tasks/<task-folder> -a <agent> -m <model>
+harbor run -p tasks/<task-folder> -a <agent> -m <model>   
