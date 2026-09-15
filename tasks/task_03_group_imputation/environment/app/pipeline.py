@@ -20,8 +20,11 @@ def main():
         errors="coerce",
     )
 
-    category_medians = frame.groupby("category")["discount"].transform("median")
-    frame["discount"] = frame["discount"].fillna(category_medians)
+    # Intentional bug:
+    # Missing discounts are filled using one global mean.
+    frame["discount"] = frame["discount"].fillna(
+        frame["discount"].mean()
+    )
 
     frame["revenue"] = frame["list_price"] * (1 - frame["discount"])
 
