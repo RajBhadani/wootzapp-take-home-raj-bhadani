@@ -1,0 +1,6 @@
+order_id,category,list_price,discount
+H1,books,100,0.10
+H2,books,200,
+H3,electronics,1000,0.30
+H4,electronics,500,
+H5,books,50,0.10
