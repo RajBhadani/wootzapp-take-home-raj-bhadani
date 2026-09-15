@@ -1,5 +1,7 @@
 schema_version = "1.4"
 
+artifacts = ["/app/output/monthly_revenue.csv"]
+
 [task]
 name = "rajbhadani/task-01-sales-join"
 version = "1.0.0"
@@ -15,6 +17,12 @@ timeout_sec = 300
 [verifier]
 timeout_sec = 120
 environment_mode = "separate"
+
+[verifier.environment]
+os = "linux"
+network_mode = "no-network"
+cpus = 1
+memory_mb = 512
 
 [environment]
 os = "linux"
