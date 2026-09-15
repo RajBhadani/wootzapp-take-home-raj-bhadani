@@ -14,3 +14,11 @@ Each task is evaluated with private hidden data and a deterministic verifier.
 
 ```cmd
 harbor run -p tasks/<task-folder> -a <agent> -m <model>
+
+## Task 3 Evaluation Note
+
+The Task 3 baseline intentionally contains the global-mean imputation bug.
+The solution script contains the category-wise median fix.
+
+The Oracle trial did not modify the artifact, while Codex and Aider trials
+could not run because of unavailable provider/network dependencies.
