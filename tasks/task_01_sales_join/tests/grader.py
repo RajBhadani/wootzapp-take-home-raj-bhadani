@@ -6,8 +6,8 @@ from pathlib import Path
 OUTPUT_FILE = Path("/app/output/monthly_revenue.csv")
 REWARD_FILE = Path("/logs/verifier/reward.txt")
 
-EXPECTED_MONTH = "2026-01"
-EXPECTED_REVENUE = 2560.0
+EXPECTED_MONTH = "2026-02"
+EXPECTED_REVENUE = 1115.0
 
 
 def write_reward(value: float) -> None:
