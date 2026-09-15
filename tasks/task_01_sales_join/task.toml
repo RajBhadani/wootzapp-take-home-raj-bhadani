@@ -1,6 +1,6 @@
 schema_version = "1.4"
 
-artifacts = ["/app/output/monthly_revenue.csv"]
+artifacts = ["/app/pipeline.py"]
 
 [task]
 name = "rajbhadani/task-01-sales-join"
